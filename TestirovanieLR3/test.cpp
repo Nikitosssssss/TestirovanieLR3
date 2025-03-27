@@ -8,7 +8,13 @@ using namespace std;
 class Game {
 public:
     Game() {};
+    string start();
 };
+
+string Game::start() //formirovanie soobsheniya o nachale igry
+{
+    return "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.";
+}
 
 
 //test na sozdanie classa igry
@@ -20,6 +26,7 @@ TEST(gameClassCreationTest, CreationClass) {
 //test na start igry
 TEST(gameClassStartTest, StartGame) {
     Game* myGame = new Game();
-    string startMessage = myGame.start();
+    string startMessage = myGame->start();
     ASSERT_EQ(startMessage, "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.");
 }
+
