@@ -66,3 +66,36 @@ TEST(gameClassAskingTest, AskAQuestion) {
     string questionText = myGame->askAQuestion(3);
     ASSERT_EQ(questionText, "Номер счета Материалы в плане счетов бухгалтерского учета ...");
 }
+
+//test predlozhit otvety na vopros 1
+TEST(gameClassAskingTest, OfferAnswers1) {
+    Game* myGame = new Game();
+    string answers[4] = myGame->offerAnswers(1);
+    string expectedAnswers[4] = { "1","9999","-1000","4" };
+    for (int i = 0; i < 4; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
+
+//test predlozhit otvety na vopros 2
+TEST(gameClassAskingTest, OfferAnswers2) {
+    Game* myGame = new Game();
+    string answers[4] = myGame->offerAnswers(2);
+    string expectedAnswers[4] = { "В декабре","Ни в каком","В никогдабре","Во всех" };
+    for (int i = 0; i < 4; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
+
+//test predlozhit otvety na vopros 3
+TEST(gameClassAskingTest, OfferAnswers3) {
+    Game* myGame = new Game();
+    string answers[4] = myGame->offerAnswers(3);
+    string expectedAnswers[4] = { "92.1","10","92.2","43.1" };
+    for (int i = 0; i < 4; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
