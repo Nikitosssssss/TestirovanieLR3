@@ -9,12 +9,18 @@ class Game {
 public:
     Game() {};
     string start();
+    string askAQuestion();
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
 string Game::start() //formirovanie soobsheniya o nachale igry
 {
     return "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.";
+}
+
+string Game::askAQuestion() //formirovanie soobsheniya o nachale igry
+{
+    return "Сколько будет 2+2?";
 }
 
 
@@ -31,9 +37,9 @@ TEST(gameClassStartTest, StartGame) {
     ASSERT_EQ(startMessage, "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.");
 }
 
-//test na start igry
+//test zadit vopros
 TEST(gameClassAskingTest, AskAQuestion) {
-
+    //todo сделать больше одного вопроса
     Game* myGame = new Game();
     string questionText = myGame->askAQuestion();
     ASSERT_EQ(questionText, "Сколько будет 2+2?");
