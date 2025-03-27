@@ -9,7 +9,7 @@ class Game {
 public:
     Game() {};
     string start();
-    string askAQuestion();
+    string askAQuestion(int numberOfQuestion);
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
@@ -18,11 +18,18 @@ string Game::start() //formirovanie soobsheniya o nachale igry
     return "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.";
 }
 
-string Game::askAQuestion() //formirovanie soobsheniya o nachale igry
+
+//pararmetry: int numberOfQuestion - celoe, nomer voprosa, rezultat - stroka, text voprosa
+string Game::askAQuestion(int numberOfQuestion) //formirovanie soobsheniya o nachale igry
 {
     //todo добавить больше вопросов
     //todo хранение вопросов в файле
-    return "Сколько будет 2+2?";
+    if(numberOfQuestion==1)
+        return "Сколько будет 2+2?";
+    if (numberOfQuestion == 2)
+        return "В каком месяце 28 дней?";
+    if (numberOfQuestion == 3)
+        return "Номер счета Материалы в плане счетов бухгалтерского учета ...";
 }
 
 
