@@ -10,6 +10,7 @@ public:
     Game() {};
     string start();
     string askAQuestion(int numberOfQuestion);
+    string* offerAnswers(int numberOfQuestion);
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
@@ -30,6 +31,27 @@ string Game::askAQuestion(int numberOfQuestion) //formirovanie soobsheniya o nac
         return "В каком месяце 28 дней?";
     if (numberOfQuestion == 3)
         return "Номер счета Материалы в плане счетов бухгалтерского учета ...";
+}
+
+//pararmetry: int numberOfQuestion - celoe, nomer voprosa, rezultat - massiv strok, otvety
+string* Game::offerAnswers(int numberOfQuestion) //formirovanie soobsheniya o nachale igry
+{
+    string* arr = new string[4];
+    if (numberOfQuestion == 1)
+    {
+        string* arr = new string[4]{ "1","9999","-1000","4" };
+        return arr; 
+    }
+    if (numberOfQuestion == 2)
+    {
+        string* arr = new string[4]{ "В декабре","Ни в каком","В никогдабре","Во всех" };
+        return arr;
+    }
+    if (numberOfQuestion == 3)
+    {
+        string* arr = new string[4]{ "92.1","10","92.2","43.1" };
+        return arr;
+    }
 }
 
 
@@ -70,7 +92,7 @@ TEST(gameClassAskingTest, AskAQuestion) {
 //test predlozhit otvety na vopros 1
 TEST(gameClassAskingTest, OfferAnswers1) {
     Game* myGame = new Game();
-    string answers[4] = myGame->offerAnswers(1);
+    string *answers = myGame->offerAnswers(1);
     string expectedAnswers[4] = { "1","9999","-1000","4" };
     for (int i = 0; i < 4; i++)
     {
@@ -81,7 +103,7 @@ TEST(gameClassAskingTest, OfferAnswers1) {
 //test predlozhit otvety na vopros 2
 TEST(gameClassAskingTest, OfferAnswers2) {
     Game* myGame = new Game();
-    string answers[4] = myGame->offerAnswers(2);
+    string *answers = myGame->offerAnswers(2);
     string expectedAnswers[4] = { "В декабре","Ни в каком","В никогдабре","Во всех" };
     for (int i = 0; i < 4; i++)
     {
@@ -92,7 +114,7 @@ TEST(gameClassAskingTest, OfferAnswers2) {
 //test predlozhit otvety na vopros 3
 TEST(gameClassAskingTest, OfferAnswers3) {
     Game* myGame = new Game();
-    string answers[4] = myGame->offerAnswers(3);
+    string *answers = myGame->offerAnswers(3);
     string expectedAnswers[4] = { "92.1","10","92.2","43.1" };
     for (int i = 0; i < 4; i++)
     {
