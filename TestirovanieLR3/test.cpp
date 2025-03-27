@@ -11,6 +11,7 @@ public:
     string start();
 };
 
+// rezultat - stroka, vsegda odno i to zhe soobshenie
 string Game::start() //formirovanie soobsheniya o nachale igry
 {
     return "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.";
@@ -30,3 +31,10 @@ TEST(gameClassStartTest, StartGame) {
     ASSERT_EQ(startMessage, "Добро пожаловать на игру Кто хочет стать миллионером! Нажмите enter, чтобы начать.");
 }
 
+//test na start igry
+TEST(gameClassAskingTest, AskAQuestion) {
+
+    Game* myGame = new Game();
+    string questionText = myGame->askAQuestion();
+    ASSERT_EQ(questionText, "Сколько будет 2+2?");
+}
