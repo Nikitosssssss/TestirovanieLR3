@@ -11,6 +11,7 @@ public:
     string start();
     string askAQuestion(int numberOfQuestion);
     string* offerAnswers(int numberOfQuestion);
+    bool Game::processResponses(int numberOfQuestion, int numberOfAnswer);
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
@@ -52,6 +53,28 @@ string* Game::offerAnswers(int numberOfQuestion) //formirovanie soobsheniya o na
         string* arr = new string[4]{ "92.1","10","92.2","43.1" };
         return arr;
     }
+}
+
+//pararmetry: int numberOfQuestion - celoe, nomer voprosa,numberOfAnswer - celoe, nomer otveta, rezultat - bulevo, vernyi li otvet
+bool Game::processResponses(int numberOfQuestion, int numberOfAnswer) //formirovanie soobsheniya o nachale igry
+{
+    bool rezult = false;
+    if (numberOfQuestion == 1)
+    {
+        if (numberOfAnswer == 4)
+            rezult = true;
+    }
+    if (numberOfQuestion == 2)
+    {
+        if (numberOfAnswer == 4)
+            rezult = true;
+    }
+    if (numberOfQuestion == 3)
+    {
+        if (numberOfAnswer == 2)
+            rezult = true;
+    }
+    return rezult;
 }
 
 
@@ -130,7 +153,7 @@ TEST(gameClassAskingTest, ProcessResponses1) {
 }
 
 //test proverit otxet na vopros1
-TEST(gameClassAskingTest, ProcessResponses1) {
+TEST(gameClassAskingTest, ProcessResponses1True) {
     Game* myGame = new Game();
     bool isRightAnswer = myGame->processResponses(1, 4);
     ASSERT_EQ(isRightAnswer, true);
@@ -144,21 +167,21 @@ TEST(gameClassAskingTest, ProcessResponses2) {
 }
 
 //test proverit otxet na vopros2
-TEST(gameClassAskingTest, ProcessResponses2) {
+TEST(gameClassAskingTest, ProcessResponses2True) {
     Game* myGame = new Game();
     bool isRightAnswer = myGame->processResponses(2, 4);
     ASSERT_EQ(isRightAnswer, true);
 }
 
 //test proverit otxet na vopros3
-TEST(gameClassAskingTest, ProcessResponses1) {
+TEST(gameClassAskingTest, ProcessResponses3) {
     Game* myGame = new Game();
     bool isRightAnswer = myGame->processResponses(3, 1);
     ASSERT_EQ(isRightAnswer, false);
 }
 
 //test proverit otxet na vopros3
-TEST(gameClassAskingTest, ProcessResponses1) {
+TEST(gameClassAskingTest, ProcessResponses3True) {
     Game* myGame = new Game();
     bool isRightAnswer = myGame->processResponses(3, 2);
     ASSERT_EQ(isRightAnswer, true);
