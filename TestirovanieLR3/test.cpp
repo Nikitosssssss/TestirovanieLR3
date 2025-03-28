@@ -11,7 +11,7 @@ public:
     string start();
     string askAQuestion(int numberOfQuestion);
     string* offerAnswers(int numberOfQuestion);
-    bool Game::processResponses(int numberOfQuestion, int numberOfAnswer);
+    bool processResponses(int numberOfQuestion, int numberOfAnswer);
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
@@ -40,17 +40,17 @@ string* Game::offerAnswers(int numberOfQuestion) //formirovanie soobsheniya o na
     string* arr = new string[4];
     if (numberOfQuestion == 1)
     {
-        string* arr = new string[4]{ "1","9999","-1000","4" };
+        string* arr = new string[4]{ "1) 1","2) 9999","3) -1000","4) 4" };
         return arr; 
     }
     if (numberOfQuestion == 2)
     {
-        string* arr = new string[4]{ "В декабре","Ни в каком","В никогдабре","Во всех" };
+        string* arr = new string[4]{ "1) В декабре","2) Ни в каком","3) В никогдабре","4) Во всех" };
         return arr;
     }
     if (numberOfQuestion == 3)
     {
-        string* arr = new string[4]{ "92.1","10","92.2","43.1" };
+        string* arr = new string[4]{ "1) 92.1","2) 10","3) 92.2","4) 43.1" };
         return arr;
     }
 }
@@ -116,7 +116,7 @@ TEST(gameClassAskingTest, AskAQuestion) {
 TEST(gameClassAskingTest, OfferAnswers1) {
     Game* myGame = new Game();
     string *answers = myGame->offerAnswers(1);
-    string expectedAnswers[4] = { "1","9999","-1000","4" };
+    string expectedAnswers[4] = { "1) 1","2) 9999","3) -1000","4) 4" };
     for (int i = 0; i < 4; i++)
     {
         EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
@@ -127,7 +127,7 @@ TEST(gameClassAskingTest, OfferAnswers1) {
 TEST(gameClassAskingTest, OfferAnswers2) {
     Game* myGame = new Game();
     string *answers = myGame->offerAnswers(2);
-    string expectedAnswers[4] = { "В декабре","Ни в каком","В никогдабре","Во всех" };
+    string expectedAnswers[4] = { "1) В декабре","2) Ни в каком","3) В никогдабре","4) Во всех" };
     for (int i = 0; i < 4; i++)
     {
         EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
@@ -138,7 +138,7 @@ TEST(gameClassAskingTest, OfferAnswers2) {
 TEST(gameClassAskingTest, OfferAnswers3) {
     Game* myGame = new Game();
     string *answers = myGame->offerAnswers(3);
-    string expectedAnswers[4] = { "92.1","10","92.2","43.1" };
+    string expectedAnswers[4] = { "1) 92.1","2) 10","3) 92.2","4) 43.1" };
     for (int i = 0; i < 4; i++)
     {
         EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
@@ -186,3 +186,37 @@ TEST(gameClassAskingTest, ProcessResponses3True) {
     bool isRightAnswer = myGame->processResponses(3, 2);
     ASSERT_EQ(isRightAnswer, true);
 }
+
+//test 50 na 50 vopros 1
+TEST(gameClassHintTest, Hint50_50) {
+    Game* myGame = new Game();
+    string* answers = myGame->make50on50Hint(1);
+    string expectedAnswers[2] = { "1) 1","4) 4"};
+    for (int i = 0; i < 2; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
+
+//test 50 na 50 vopros 2
+TEST(gameClassHintTest, Hint50_50) {
+    Game* myGame = new Game();
+    string* answers = myGame->make50on50Hint(2);
+    string expectedAnswers[2] = { "3) В никогдабре","4) Во всех" };
+    for (int i = 0; i < 2; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
+
+//test 50 na 50 vopros 3
+TEST(gameClassHintTest, Hint50_50) {
+    Game* myGame = new Game();
+    string* answers = myGame->make50on50Hint(3);
+    string expectedAnswers[2] = { "1) 92.1","2) 10"};
+    for (int i = 0; i < 2; i++)
+    {
+        EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
+    }
+}
+
