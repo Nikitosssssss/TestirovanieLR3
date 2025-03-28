@@ -80,6 +80,7 @@ bool Game::processResponses(int numberOfQuestion, int numberOfAnswer) //formirov
 
 string* Game::make50on50Hint(int numberOfQuestion) //formirovanie soobsheniya o nachale igry
 {
+    //todo dobavit proverku na vyzov
     string* arr = new string[2];
     if (numberOfQuestion == 1)
     {
@@ -96,6 +97,7 @@ string* Game::make50on50Hint(int numberOfQuestion) //formirovanie soobsheniya o 
         string* arr = new string[2]{ "1) 92.1","2) 10" };
         return arr;
     }
+ 
 }
 
 //test na sozdanie classa igry
@@ -240,3 +242,20 @@ TEST(gameClassHintTest, Hint50_50v3) {
     }
 }
 
+//test 50 na 50
+TEST(gameClassHintTest, Hint50_50SecondCall) {
+    Game* myGame = new Game();
+    string* answers = myGame->make50on50Hint(1);
+    string* answers2 = myGame->make50on50Hint(2);
+    bool mayMake50on50Hint = myGame->checkMake50on50Hint();
+    ASSERT_EQ(mayMake50on50Hint, false);
+}
+
+//test 50 na 50
+TEST(gameClassHintTest, Hint50_50FirstCall) {
+    Game* myGame = new Game();
+    string* answers = myGame->make50on50Hint(1);
+    string* answers2 = myGame->make50on50Hint(2);
+    bool mayMake50on50Hint = myGame->checkMake50on50Hint();
+    ASSERT_EQ(mayMake50on50Hint, true);
+}
