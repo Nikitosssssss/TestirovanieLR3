@@ -121,3 +121,45 @@ TEST(gameClassAskingTest, OfferAnswers3) {
         EXPECT_EQ(answers[i], expectedAnswers[i]) << "Error in position: " << i;
     }
 }
+
+//test proverit otxet na vopros1
+TEST(gameClassAskingTest, ProcessResponses1) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(1,1);
+    ASSERT_EQ(isRightAnswer, false);
+}
+
+//test proverit otxet na vopros1
+TEST(gameClassAskingTest, ProcessResponses1) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(1, 4);
+    ASSERT_EQ(isRightAnswer, true);
+}
+
+//test proverit otxet na vopros2
+TEST(gameClassAskingTest, ProcessResponses2) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(2, 1);
+    ASSERT_EQ(isRightAnswer, false);
+}
+
+//test proverit otxet na vopros2
+TEST(gameClassAskingTest, ProcessResponses2) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(2, 4);
+    ASSERT_EQ(isRightAnswer, true);
+}
+
+//test proverit otxet na vopros3
+TEST(gameClassAskingTest, ProcessResponses1) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(3, 1);
+    ASSERT_EQ(isRightAnswer, false);
+}
+
+//test proverit otxet na vopros3
+TEST(gameClassAskingTest, ProcessResponses1) {
+    Game* myGame = new Game();
+    bool isRightAnswer = myGame->processResponses(3, 2);
+    ASSERT_EQ(isRightAnswer, true);
+}
