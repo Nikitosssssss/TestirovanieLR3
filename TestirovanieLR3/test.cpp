@@ -12,6 +12,7 @@ public:
     string askAQuestion(int numberOfQuestion);
     string* offerAnswers(int numberOfQuestion);
     bool processResponses(int numberOfQuestion, int numberOfAnswer);
+    string* make50on50Hint(int numberOfQuestion);
 };
 
 // rezultat - stroka, vsegda odno i to zhe soobshenie
@@ -77,6 +78,25 @@ bool Game::processResponses(int numberOfQuestion, int numberOfAnswer) //formirov
     return rezult;
 }
 
+string* Game::make50on50Hint(int numberOfQuestion) //formirovanie soobsheniya o nachale igry
+{
+    string* arr = new string[2];
+    if (numberOfQuestion == 1)
+    {
+        string* arr = new string[2]{ "1) 1","4) 4" };
+        return arr;
+    }
+    if (numberOfQuestion == 2)
+    {
+        string* arr = new string[2]{ "3) В никогдабре","4) Во всех" };
+        return arr;
+    }
+    if (numberOfQuestion == 3)
+    {
+        string* arr = new string[2]{ "1) 92.1","2) 10" };
+        return arr;
+    }
+}
 
 //test na sozdanie classa igry
 TEST(gameClassCreationTest, CreationClass) {
@@ -188,7 +208,7 @@ TEST(gameClassAskingTest, ProcessResponses3True) {
 }
 
 //test 50 na 50 vopros 1
-TEST(gameClassHintTest, Hint50_50) {
+TEST(gameClassHintTest, Hint50_50v1) {
     Game* myGame = new Game();
     string* answers = myGame->make50on50Hint(1);
     string expectedAnswers[2] = { "1) 1","4) 4"};
@@ -199,7 +219,7 @@ TEST(gameClassHintTest, Hint50_50) {
 }
 
 //test 50 na 50 vopros 2
-TEST(gameClassHintTest, Hint50_50) {
+TEST(gameClassHintTest, Hint50_50v2) {
     Game* myGame = new Game();
     string* answers = myGame->make50on50Hint(2);
     string expectedAnswers[2] = { "3) В никогдабре","4) Во всех" };
@@ -210,7 +230,7 @@ TEST(gameClassHintTest, Hint50_50) {
 }
 
 //test 50 na 50 vopros 3
-TEST(gameClassHintTest, Hint50_50) {
+TEST(gameClassHintTest, Hint50_50v3) {
     Game* myGame = new Game();
     string* answers = myGame->make50on50Hint(3);
     string expectedAnswers[2] = { "1) 92.1","2) 10"};
